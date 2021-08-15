@@ -31,26 +31,17 @@ const getContactById = async (contactId) => {
 
 const removeContact = async (contactId) => {
     try {
-        const contacts = await listContacts();
-        const requiredContactIdx = contacts.findIndex(
-            (item) => item.id === +contactId
+        const data = await fs.readFile(contactsPath);
+        const contacts = JSON.parse(data);
+        const filteredContacts = contacts.filter(
+            (contact) => contact.id !== Number(contactId)
         );
-
-        if (requiredContactIdx === -1) {
-            throw new Error(`Contacts with id=${contactId} not found`);
-        }
-
-        const renewedContacts = contacts.filter(
-            (contact) => contact.id !== contactId
-        );
-
-        await fs.writeFile(contactsPath, JSON.stringify(renewedContacts));
-
-        return contacts[requiredContactIdx];
+        await fs.writeFile(contactsPath, JSON.stringify(filteredContacts));
+        console.table(filteredContacts);
     } catch (error) {
-        throw error;
+        console.log(error.message);
     }
-};
+}
 
 const addContact = async (name, email, phone) => {
     try {
@@ -63,7 +54,7 @@ const addContact = async (name, email, phone) => {
         };
         contacts.push(newContact);
         await fs.writeFile(contactsPath, JSON.stringify(contacts));
-        return newContact;
+        return console.table(contacts);
     } catch (error) {
         throw error;
     }
