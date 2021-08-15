@@ -1,0 +1,29 @@
+{
+  "name": "node-hw-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yevhen-cherniuk/goit-node-hw-01-cli-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yevhen-cherniuk/goit-node-hw-01-cli-app/issues"
+  },
+  "homepage": "https://github.com/yevhen-cherniuk/goit-node-hw-01-cli-app#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "commander": "^8.1.0",
+    "uuid": "^8.3.2"
+  }
+}
